@@ -3,12 +3,16 @@ from fastapi import FastAPI, BackgroundTasks
 from datetime import datetime, timezone
 import time
 from azure.storage.blob import BlobServiceClient
+from dotenv import load_dotenv
 
+load_dotenv()
 app = FastAPI()
 
 AZURE_STORAGE_CONNECTION_STRING = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
 # Thay bằng chuỗi kết nối của storage account của bạn
 CONTAINER_NAME = "testcontainer"
+
+print("AZURE_STORAGE_CONNECTION_STRING123123", AZURE_STORAGE_CONNECTION_STRING)
 
 # Khởi tạo BlobServiceClient
 blob_service_client = BlobServiceClient.from_connection_string(

@@ -12,8 +12,6 @@ AZURE_STORAGE_CONNECTION_STRING = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
 # Thay bằng chuỗi kết nối của storage account của bạn
 CONTAINER_NAME = "testcontainer"
 
-print("AZURE_STORAGE_CONNECTION_STRING123123", AZURE_STORAGE_CONNECTION_STRING)
-
 # Khởi tạo BlobServiceClient
 blob_service_client = BlobServiceClient.from_connection_string(
     AZURE_STORAGE_CONNECTION_STRING
@@ -42,7 +40,7 @@ def background_task():
     blob_client.upload_blob(content, overwrite=True)
 
 
-@app.get("/")
+@app.get("/message")
 async def root(background_tasks: BackgroundTasks):
     background_tasks.add_task(background_task)
     return "Hello World!"

@@ -40,7 +40,7 @@ def background_task():
     blob_client.upload_blob(content, overwrite=True)
 
 
-@app.get("/message")
+@app.get("/")
 async def root(background_tasks: BackgroundTasks):
     background_tasks.add_task(background_task)
     return "Hello World!"

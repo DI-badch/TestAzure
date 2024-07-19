@@ -3,10 +3,18 @@ from fastapi import FastAPI, BackgroundTasks
 from datetime import datetime, timezone
 import time
 from azure.storage.blob import BlobServiceClient
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 load_dotenv()
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Hoặc cấu hình các domain cụ thể
+    allow_credentials=True,
+    allow_methods=["*"],  # Hoặc các phương thức cụ thể
+    allow_headers=["*"],  # Hoặc các headers cụ thể
+)
 
 AZURE_STORAGE_CONNECTION_STRING = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
 # Thay bằng chuỗi kết nối của storage account của bạn

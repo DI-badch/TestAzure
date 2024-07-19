@@ -6,13 +6,13 @@ from azure.storage.blob import BlobServiceClient
 
 app = FastAPI()
 
-STORAGE_CONNECTION_STRING = os.environ["STORAGE_CONNECTION_STRING"]
+AZURE_STORAGE_CONNECTION_STRING = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
 # Thay bằng chuỗi kết nối của storage account của bạn
 CONTAINER_NAME = "testcontainer"
 
 # Khởi tạo BlobServiceClient
 blob_service_client = BlobServiceClient.from_connection_string(
-    STORAGE_CONNECTION_STRING
+    AZURE_STORAGE_CONNECTION_STRING
 )
 
 
